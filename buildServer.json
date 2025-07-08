@@ -1,0 +1,19 @@
+{
+	"name": "xcode build server",
+	"version": "0.2",
+	"bspVersion": "2.0",
+	"languages": [
+		"c",
+		"cpp",
+		"objective-c",
+		"objective-cpp",
+		"swift"
+	],
+	"argv": [
+		"/opt/homebrew/bin/xcode-build-server"
+	],
+	"workspace": "/Users/yerim/Library/Mobile Documents/com~apple~CloudDocs/YerimMac/cursorProjects/testProjectWithCursor/testProjectWithCursor.xcodeproj/project.xcworkspace",
+	"build_root": "/Users/yerim/Library/Developer/Xcode/DerivedData/testProjectWithCursor-bivqsnbydapuwodzhdmtgcytbvjx",
+	"scheme": "testProjectWithCursor",
+	"kind": "xcode"
+}

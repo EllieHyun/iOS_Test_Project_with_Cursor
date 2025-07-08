@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State private var selectedTab = 0
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -17,6 +18,8 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
+        TabView(selection: $selectedTab) {
+            // 로컬 데이터 화면
         NavigationView {
             List {
                 ForEach(items) { item in
@@ -41,6 +44,44 @@ struct ContentView: View {
                 }
             }
             Text("Select an item")
+            }
+            .tabItem {
+                Image(systemName: "list.bullet")
+                Text("로컬 데이터")
+            }
+            .tag(0)
+            
+            // 백엔드 API 연동 화면
+            UserListView()
+                .tabItem {
+                    Image(systemName: "person.2")
+                    Text("사용자 목록")
+                }
+                .tag(1)
+            
+            // Figma 디자인 화면
+            FigmaDesignView()
+                .tabItem {
+                    Image(systemName: "paintbrush")
+                    Text("Figma 디자인")
+                }
+                .tag(2)
+            
+            // Apple MCP 화면
+            MCPView()
+                .tabItem {
+                    Image(systemName: "brain.head.profile")
+                    Text("Apple MCP")
+                }
+                .tag(3)
+            
+            // 자연어 명령 화면
+            VoiceCommandView()
+                .tabItem {
+                    Image(systemName: "mic.fill")
+                    Text("자연어 명령")
+                }
+                .tag(4)
         }
     }
 
